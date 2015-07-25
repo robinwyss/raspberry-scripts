@@ -2,8 +2,8 @@
 
 from tinkerforge.ip_connection import IPConnection
 from tinkerforge.bricklet_motion_detector import MotionDetector
-from datetime import datetime
-import picamera
+
+import camera
 
 HOST = "192.168.1.60"
 PORT = 4223
@@ -22,11 +22,7 @@ def cb_motion_detected():
 
 def take_picture(count):
     for x in range(0, count):
-        with picamera.PiCamera() as camera:
-            timestamp = datetime.now().strftime("%Y-%m-%d--%H-%M-%S.%f")
-            filename = 'pictures/img.'+timestamp+'.jpg'
-            camera.capture(filename)
-            print("saved image: " + filename)
+        camera.capture()
 
 
 if __name__ == "__main__":
