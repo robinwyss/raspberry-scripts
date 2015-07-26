@@ -20,4 +20,7 @@ def configSectionMap(section):
 
 
 def getFtpConfig():
-    return configSectionMap("FtpConfig")
+    return configSectionMap("FTP")
+
+def getCameraConfig():
+    return configSectionMap("Camera")

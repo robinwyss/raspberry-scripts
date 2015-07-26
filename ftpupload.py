@@ -1,4 +1,5 @@
 from ftplib import FTP
+from os.path import basename
 import config
 
 ftp_config = config.getFtpConfig()
@@ -12,12 +13,10 @@ def _openConnection():
     connection.cwd(folder)
     return connection
 
-def uploadFile(path, name):
+def uploadFile(path):
+    name = basename(path)
     connection = _openConnection()
-    file = open(path, 'rb')
-    connection.storbinary('STOR ' + name, file)
-    file.close()
-    connection.quit()
-
-
-uploadFile("/Users/robinwyss/Downloads/DSC_0643.JPG", "DSC_0643.JPG")
+    with open(path, 'rb') as file:
+        connection.storbinary('STOR ' + name, file)
+        file.close()
+        connection.quit()
