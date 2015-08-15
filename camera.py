@@ -19,6 +19,8 @@ def capture():
         if not exists(folder):
             makedirs(folder)
         filePath = join(folder, filename)
+        camera.start_preview()
+        time.sleep(2)
         camera.capture(filePath)
         print("saved image: " + filePath)
         return filename

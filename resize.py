@@ -1,4 +1,4 @@
-from PIL import Image
+from Pillow import Image
 from os.path import basename, join, exists, dirname
 from os import makedirs
 import config
@@ -11,9 +11,10 @@ folderSmall = cameraConfig["foldersmall"]
 def resizeImg(path):
     imgName = basename(path)
     img = Image.open(path)
-    img2 = img.resize(size, Image.ANTIALIAS)
+    img = img.resize(size, Image.ANTIALIAS)
+    img = img.transpose(Image.FLIP_TOP_BOTTOM)
     if not exists(folderSmall):
         makedirs(folderSmall)
     filePath = join(folderSmall, imgName)
-    img2.save(filePath)
+    img.save(filePath)
     return filePath
