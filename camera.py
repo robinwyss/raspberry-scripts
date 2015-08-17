@@ -20,7 +20,6 @@ def capture():
         if not exists(folder):
             makedirs(folder)
         filePath = join(folder, filename)
-        camera.meter_mode = "matrix"
         camera.start_preview()
         time.sleep(2)
         camera.capture(filePath)

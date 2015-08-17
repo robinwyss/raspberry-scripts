@@ -12,7 +12,7 @@ def resizeImg(path):
     imgName = basename(path)
     img = Image.open(path)
     img = img.resize(size, Image.ANTIALIAS)
-    img = img.transpose(Image.ROTATE_180)
+    img = img.transpose(Image.FLIP_TOP_BOTTOM)
     if not exists(folderSmall):
         makedirs(folderSmall)
     filePath = join(folderSmall, imgName)

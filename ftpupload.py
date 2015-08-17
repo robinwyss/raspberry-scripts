@@ -18,5 +18,4 @@ def uploadFile(path):
     connection = _openConnection()
     with open(path, 'rb') as file:
         connection.storbinary('STOR ' + name, file)
-        file.close()
         connection.quit()
