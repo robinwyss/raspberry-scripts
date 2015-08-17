@@ -11,9 +11,10 @@ folderSmall = cameraConfig["foldersmall"]
 def resizeImg(path):
     imgName = basename(path)
     img = Image.open(path)
-    img2 = img.resize(size, Image.ANTIALIAS)
+    img = img.resize(size, Image.ANTIALIAS)
+    img = img.transpose(Image.ROTATE_180)
     if not exists(folderSmall):
         makedirs(folderSmall)
     filePath = join(folderSmall, imgName)
-    img2.save(filePath)
+    img.save(filePath)
     return filePath

@@ -1,6 +1,7 @@
 import picamera
 from datetime import datetime
 import config
+import time
 from os.path import join, exists
 from os import makedirs
 
@@ -19,6 +20,9 @@ def capture():
         if not exists(folder):
             makedirs(folder)
         filePath = join(folder, filename)
+        camera.meter_mode = "matrix"
+        camera.start_preview()
+        time.sleep(2)
         camera.capture(filePath)
         print("saved image: " + filePath)
-        return filename
+        return filePath
