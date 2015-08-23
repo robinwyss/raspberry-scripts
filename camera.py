@@ -20,6 +20,9 @@ def capture():
         if not exists(folder):
             makedirs(folder)
         filePath = join(folder, filename)
+        camera.resolution = (2592, 1944)
+        camera.vflip = True
+        camera.hflip = True
         camera.start_preview()
         time.sleep(2)
         camera.capture(filePath)
